@@ -64,3 +64,30 @@ void printDataAdvance(char words[][MAX_WORD_LEN], int n, int limit) {
     }
 
     printf("\n");
+}
+
+// Membaca dataset dari file txt
+int readWordsFromFile(const char *filename, char words[][MAX_WORD_LEN]) {
+    FILE *fp = fopen(filename, "r");
+
+    if (fp == NULL) {
+        printf("File tidak ditemukan!\n");
+        return 0;
+    }
+
+    int count = 0;
+
+    while (count < MAX_WORDS && fscanf(fp, "%99s", words[count]) == 1) {
+        count++;
+    }
+
+    fclose(fp);
+
+    return count;
+}
+
+// Bubble sort
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
