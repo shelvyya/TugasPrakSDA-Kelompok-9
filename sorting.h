@@ -25,3 +25,18 @@ void shuffleDataDasar(int arr[], int n);
 void printDataDasar(int arr[], int n, int limit);
 
 // Fungsi data advance sorting
+int readWordsFromFile(const char *filename, char words[][MAX_WORD_LEN]);
+void shuffleDataAdvance(char words[][MAX_WORD_LEN], int n);
+void printDataAdvance(char words[][MAX_WORD_LEN], int n, int limit);
+
+// Algoritma sorting dasar
+void bubbleSort(int arr[], int n);
+void insertionSort(int arr[], int n);
+void selectionSort(int arr[], int n);
+
+// Algoritma advance sorting
+void mergeSort(char words[][MAX_WORD_LEN], int left, int right);
+void quickSort(char words[][MAX_WORD_LEN], int low, int high);
+void shellSort(char words[][MAX_WORD_LEN], int n);
+
+#endif
