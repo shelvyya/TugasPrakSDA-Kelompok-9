@@ -37,3 +37,30 @@ void shuffleDataDasar(int arr[], int n) {
 // Menampilkan data integer
 void printDataDasar(int arr[], int n, int limit) {
     int tampil = (n < limit) ? n : limit;
+
+    for (int i = 0; i < tampil; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    printf("\n");
+}
+
+// Utilitas data advance
+
+// Mengacak data string
+void shuffleDataAdvance(char words[][MAX_WORD_LEN], int n) {
+    for (int i = n - 1; i > 0; i--) {
+        int j = rand() % (i + 1);
+        swapString(words[i], words[j]);
+    }
+}
+
+// Menampilkan data string
+void printDataAdvance(char words[][MAX_WORD_LEN], int n, int limit) {
+    int tampil = (n < limit) ? n : limit;
+
+    for (int i = 0; i < tampil; i++) {
+        printf("%s\n", words[i]);
+    }
+
+    printf("\n");
