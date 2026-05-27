@@ -172,3 +172,30 @@ void merge(char words[][MAX_WORD_LEN], int left, int mid, int right) {
 }
 
 // Merge sort
+void mergeSort(char words[][MAX_WORD_LEN], int left, int right) {
+
+    if (left < right) {
+
+        int mid = left + (right - left) / 2;
+
+        mergeSort(words, left, mid);
+        mergeSort(words, mid + 1, right);
+
+        merge(words, left, mid, right);
+    }
+}
+
+// Partition quick sort
+int partition(char words[][MAX_WORD_LEN], int low, int high) {
+
+    char pivot[MAX_WORD_LEN];
+    strcpy(pivot, words[high]);
+
+    int i = low - 1;
+
+    for (int j = low; j < high; j++) {
+        if (strcmp(words[j], pivot) < 0) {
+            i++;
+            swapString(words[i], words[j]);
+        }
+    }
