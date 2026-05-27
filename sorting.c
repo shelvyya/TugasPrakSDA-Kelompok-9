@@ -145,3 +145,30 @@ void merge(char words[][MAX_WORD_LEN], int left, int mid, int right) {
     int i = 0;
     int j = 0;
     int k = left;
+
+    while (i < n1 && j < n2) {
+        if (strcmp(L[i], R[j]) <= 0) {
+            strcpy(words[k], L[i]);
+            i++;
+        } 
+        else {
+            strcpy(words[k], R[j]);
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1) {
+        strcpy(words[k], L[i]);
+        i++;
+        k++;
+    }
+
+    while (j < n2) {
+        strcpy(words[k], R[j]);
+        j++;
+        k++;
+    }
+}
+
+// Merge sort
