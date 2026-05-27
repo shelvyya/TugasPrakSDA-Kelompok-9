@@ -118,3 +118,30 @@ void selectionSort(int arr[], int n) {
 
         for (int j = i + 1; j < n; j++) {
             if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+        swapInt(&arr[i], &arr[minIndex]);
+    }
+}
+
+// Merge process
+void merge(char words[][MAX_WORD_LEN], int left, int mid, int right) {
+
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    char L[n1][MAX_WORD_LEN];
+    char R[n2][MAX_WORD_LEN];
+
+    for (int i = 0; i < n1; i++) {
+        strcpy(L[i], words[left + i]);
+    }
+
+    for (int j = 0; j < n2; j++) {
+        strcpy(R[j], words[mid + 1 + j]);
+    }
+
+    int i = 0;
+    int j = 0;
+    int k = left;
