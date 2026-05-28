@@ -72,3 +72,57 @@ int main() {
                     printf("\n===== ADVANCE SORTING =====\n");
                     printf("1. Merge Sort\n");
                     printf("2. Quick Sort\n");
+                    printf("3. Shell Sort\n");
+                    printf("4. Kembali\n");
+                    printf("Pilih metode : ");
+                    scanf("%d", &menuAdvance);
+
+                    if(menuAdvance >= 1 && menuAdvance <= 3) {
+                        jumlahWords = readWordsFromFile("words.txt", words);
+                        if(jumlahWords == 0) {
+                            printf("\nDataset gagal dibaca!\n");
+                            break;
+                        }
+
+                        shuffleDataAdvance(words, jumlahWords);
+
+                        printf("\nData sebelum sorting:\n");
+                        printDataAdvance(words, jumlahWords, DISPLAY_LIMIT_ADVANCE);
+                        start = clock();
+
+                        switch(menuAdvance) {
+                            case 1:
+                                mergeSort(words, 0, jumlahWords - 1);
+                                printf("\nMetode: Merge Sort\n");
+                                break;
+                            case 2:
+                                quickSort(words, 0, jumlahWords - 1);
+                                printf("\nMetode: Quick Sort\n");
+                                break;
+                            case 3:
+                                shellSort(words, jumlahWords);
+                                printf("\nMetode: Shell Sort\n");
+                                break;
+                        }
+                        end = clock();
+
+                        waktu = ((double)(end - start)) / CLOCKS_PER_SEC;
+
+                        printf("\nData setelah sorting:\n");
+                        printDataAdvance(words, jumlahWords, DISPLAY_LIMIT_ADVANCE);
+                        printf("\nJumlah data: %d kata\n", jumlahWords);
+                        printf("Waktu eksekusi: %.5f detik\n", waktu);
+                    }
+                } while(menuAdvance != 4);
+                break;
+            case 3:
+                printf("\nProgram selesai.\n");
+                break;
+            default:
+                printf("\nPilihan tidak valid!\n");
+        }
+    } 
+    while(menuUtama != 3);
+
+    return 0;
+}
