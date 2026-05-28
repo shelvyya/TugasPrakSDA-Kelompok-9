@@ -199,3 +199,37 @@ int partition(char words[][MAX_WORD_LEN], int low, int high) {
             swapString(words[i], words[j]);
         }
     }
+    swapString(words[i + 1], words[high]);
+
+    return i + 1;
+}
+
+// Quick sort
+void quickSort(char words[][MAX_WORD_LEN], int low, int high) {
+
+    if (low < high) {
+
+        int pi = partition(words, low, high);
+
+        quickSort(words, low, pi - 1);
+        quickSort(words, pi + 1, high);
+    }
+}
+
+// Shell sort
+void shellSort(char words[][MAX_WORD_LEN], int n) {
+
+    for (int gap = n / 2; gap > 0; gap /= 2) {
+        for (int i = gap; i < n; i++) {
+            char temp[MAX_WORD_LEN];
+            strcpy(temp, words[i]);
+            
+            int j;
+
+            for (j = i; j >= gap && strcmp(words[j - gap], temp) > 0; j -= gap) {
+                strcpy(words[j], words[j - gap]);
+            }
+            strcpy(words[j], temp);
+        }
+    }
+}
